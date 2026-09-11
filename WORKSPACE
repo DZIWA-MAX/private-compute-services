@@ -240,3 +240,24 @@ git_repository(
     remote = "https://github.com/google/private-compute-libraries.git",
     tag = "v0.1.0-20230105",
 )
+
+# The README names federated compute as an open-source dependency, but no
+# repository was ever declared for it, so every //src/com/google/android/as/oss/fl
+# target referencing @federated_compute//fcp/client:fl_runner fails to resolve.
+# That target is public and, at this revision, does not require TensorFlow: the
+# BUILD file gates //fcp/client/engine:plan_engine behind a support_tfmobile
+# flag that is off by default.
+#
+# Pinned by commit because the repository publishes no tags.
+#
+# Not declared alongside it: @private_retrieval. The README names it too, and
+# two targets here reference @private_retrieval//private_retrieval/java:pir and
+# //private_retrieval/java/core, but google/private-retrieval ships the 28 Java
+# sources with no BUILD file anywhere under private_retrieval/java -- only the
+# cpp tree is buildable. Declaring the repository would not make either label
+# resolve.
+git_repository(
+    name = "federated_compute",
+    commit = "4f4895971dddb6b0631f2cf31464e39bcc71186c",
+    remote = "https://github.com/google/federated-compute.git",
+)

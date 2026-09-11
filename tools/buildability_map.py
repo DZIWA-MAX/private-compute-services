@@ -42,7 +42,8 @@ DECLARED_REPOS = frozenset([
     "androidsdk", "bazel_rules_android", "bazel_tools", "com_google_protobuf",
     "dagger", "io_bazel_rules_kotlin", "io_grpc_grpc_java", "java_grpc",
     "maven", "platforms", "private_compute_libraries", "rules_cc", "rules_java",
-    "rules_jvm_external", "rules_proto", "rules_proto_grpc", "rules_python",
+    "federated_compute", "rules_jvm_external", "rules_proto", "rules_proto_grpc",
+    "rules_python",
 ])
 
 # Symbols @bazel_rules_android//android:rules.bzl actually exports at the tag
