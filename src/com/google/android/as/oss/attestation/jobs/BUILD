@@ -29,6 +29,6 @@ android_library(
         "//src/com/google/android/as/oss/fl/federatedcompute/training",
         "//src/com/google/android/as/oss/fl/populations",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )

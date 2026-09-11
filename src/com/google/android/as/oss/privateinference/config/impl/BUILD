@@ -58,7 +58,7 @@ android_library(
         "//src/com/google/android/as/oss/privateinference/transport",
         "@maven//:androidx_core_core",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:javax_inject_javax_inject",
     ],
@@ -100,7 +100,7 @@ android_library(
     deps = [
         ":device_info",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )
@@ -111,7 +111,7 @@ android_library(
     deps = [
         ":device_info",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )
 
@@ -140,7 +140,7 @@ android_library(
         "//src/com/google/android/as/oss/privateinference/transport",
         "@maven//:androidx_core_core",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:javax_inject_javax_inject",
     ],

@@ -27,7 +27,7 @@ android_library(
         "//src/com/google/android/as/oss/common/security/api:package_security_info_java_proto_lite",
         "//third_party/java/auto:auto_value",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_guava_guava",
     ],
 )

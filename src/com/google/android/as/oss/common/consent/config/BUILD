@@ -24,6 +24,6 @@ android_library(
         "//src/com/google/android/as/oss/common/config",
         "//third_party/java/auto:auto_value",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )

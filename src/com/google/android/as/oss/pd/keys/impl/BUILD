@@ -42,7 +42,7 @@ android_library(
         ":impl",
         "//src/com/google/android/as/oss/pd/keys",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )
 
@@ -55,7 +55,7 @@ android_library(
         ":impl",
         "@maven//:com_google_crypto_tink_tink_android",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )

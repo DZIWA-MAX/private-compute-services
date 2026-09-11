@@ -35,7 +35,7 @@ android_library(
         "//src/com/google/android/as/oss/delegatedui/utils:parcelable_over_rpc",
         "//src/com/google/android/as/oss/delegatedui/utils:response_with_parcelables",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:javax_inject_javax_inject",
     ],

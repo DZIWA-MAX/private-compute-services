@@ -45,7 +45,7 @@ android_library(
         "@maven//:androidx_preference_preference",
         "@maven//:androidx_swiperefreshlayout_swiperefreshlayout",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:com_google_guava_guava",
         "@maven//:javax_inject_javax_inject",

@@ -126,7 +126,7 @@ android_library(
         "//third_party/java/androidx/lifecycle/viewmodel_compose",
         "//third_party/java/dagger/hilt:view_model",
         "//third_party/kotlin/kotlinx_coroutines:kotlinx_coroutines-jvm",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:javax_inject_javax_inject",
     ],

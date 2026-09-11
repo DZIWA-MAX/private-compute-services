@@ -36,7 +36,7 @@ android_library(
         "@federated_compute//fcp/client:fl_runner",
         "@maven//:com_google_code_findbugs_jsr305",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_guava_guava",
     ],
 )

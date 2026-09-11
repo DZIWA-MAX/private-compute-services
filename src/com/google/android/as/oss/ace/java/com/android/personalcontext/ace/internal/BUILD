@@ -54,7 +54,7 @@ android_library(
         "//src/com/google/android/as/oss/ace/java/com/android/personalcontext/ace/visualizer:personal_context_dagger_module",
         "//src/com/google/android/as/oss/ace/java/com/android/personalcontext/ace/visualizer:personal_context_visualizer_templates_module",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )
 

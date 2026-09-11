@@ -31,7 +31,7 @@ android_library(
         "//src/com/google/android/as/oss/feedback/proto/gateway:quartz_log_kt_proto_lite",
         "//src/com/google/android/as/oss/feedback/serviceclient/serviceconnection:quartz_annotations",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:javax_inject_javax_inject",
     ],

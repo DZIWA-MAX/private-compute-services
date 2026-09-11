@@ -62,6 +62,6 @@ android_library(
         "//src/com/google/android/as/oss/delegatedui/api/integration/templates:templates_kt_proto_lite",
         "//src/com/google/android/as/oss/delegatedui/service/templates",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )

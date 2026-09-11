@@ -53,7 +53,7 @@ android_library(
         "//src/com/google/android/as/oss/fl/federatedcompute/statsd",
         "//src/com/google/android/as/oss/logging:api",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )

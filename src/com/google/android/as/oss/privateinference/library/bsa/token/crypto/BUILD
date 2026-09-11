@@ -49,7 +49,7 @@ android_library(
         "@maven//:androidx_core_core",
         "@maven//:com_google_crypto_tink_tink_android",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:com_google_guava_guava",
     ],
@@ -65,7 +65,7 @@ android_library(
         ":tink_crypto_impl",
         "//src/com/google/android/as/oss/common/initializer",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )

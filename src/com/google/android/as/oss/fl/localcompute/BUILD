@@ -55,6 +55,6 @@ android_library(
         ":file_copy_start_query",
         ":resource_manager",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )

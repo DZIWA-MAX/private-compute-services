@@ -69,7 +69,7 @@ android_library(
         "//third_party/java/android_libs/cronet:httpengine_native_provider_implementation",
         "//third_party/java/grpc:cronet_api_android",
         "@maven//:androidx_annotation_annotation",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:io_grpc_grpc_api",
         "@maven//:javax_inject_javax_inject",

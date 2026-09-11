@@ -53,7 +53,7 @@ android_library(
         "@maven//:androidx_annotation_annotation",
         "@maven//:androidx_lifecycle_lifecycle_service",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:io_grpc_grpc_api",
         "@maven//:io_grpc_grpc_binder",

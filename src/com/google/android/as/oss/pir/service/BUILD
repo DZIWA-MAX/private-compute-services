@@ -37,7 +37,7 @@ android_library(
         "//src/com/google/android/as/oss/pir/api:pir_java_proto_lite",
         "@maven//:androidx_annotation_annotation",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_errorprone_error_prone_annotations",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:com_google_protobuf_protobuf_lite",

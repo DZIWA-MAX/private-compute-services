@@ -37,7 +37,7 @@ android_library(
         "@maven//:androidx_annotation_annotation",
         "@maven//:androidx_core_core",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:com_google_guava_guava",
         "@maven//:javax_inject_javax_inject",
@@ -53,7 +53,7 @@ android_library(
         "//src/com/google/android/as/oss/common/config/impl:pcs_common_config",
         "//src/com/google/android/as/oss/common/initializer",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )
 
@@ -63,6 +63,6 @@ android_library(
     deps = [
         "//third_party/java/androidx/work",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )

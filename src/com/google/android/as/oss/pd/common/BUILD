@@ -43,7 +43,7 @@ android_library(
         "//src/com/google/android/as/oss/common/config",
         "//src/com/google/android/as/oss/pd/api:protected_download_java_proto_lite",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_guava_guava",
         "@maven//:javax_inject_javax_inject",
     ],

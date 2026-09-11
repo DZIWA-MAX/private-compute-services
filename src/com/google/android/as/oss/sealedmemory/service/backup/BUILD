@@ -41,7 +41,7 @@ android_library(
         "//src/com/google/android/as/oss/sealedmemory/service/impl:key_generation_util",
         "//third_party/java/dagger/hilt:entry_point",
         "//third_party/kotlin/kotlinx_coroutines:kotlinx_coroutines-jvm",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:com_google_protobuf_protobuf_javalite",
     ],
@@ -52,7 +52,7 @@ android_library(
     srcs = ["SealedMemoryBackupModule.kt"],
     deps = [
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )

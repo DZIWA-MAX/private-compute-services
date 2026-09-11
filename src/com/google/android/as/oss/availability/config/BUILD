@@ -39,7 +39,7 @@ android_library(
         "//src/com/google/android/as/oss/common:annotation",
         "//src/com/google/android/as/oss/common/config",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )

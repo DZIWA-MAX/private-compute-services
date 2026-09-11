@@ -35,7 +35,7 @@ android_library(
         "//third_party/java/proto:any_java_proto_lite",
         "@federated_compute//fcp/client:fl_runner",
         "@maven//:androidx_annotation_annotation",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:com_google_guava_guava",
         "@maven//:com_google_protobuf_protobuf_javalite",

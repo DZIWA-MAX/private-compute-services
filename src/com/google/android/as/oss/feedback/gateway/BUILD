@@ -43,7 +43,7 @@ android_library(
         "//src/com/google/android/as/oss/networkusage/config/impl",
         "//src/com/google/android/as/oss/networkusage/db",
         "//src/com/google/android/as/oss/networkusage/db:repository",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:com_squareup_okhttp3_okhttp",
         "@maven//:javax_inject_javax_inject",
@@ -63,6 +63,6 @@ android_library(
         ":feedback_http_client",
         ":feedback_http_client_impl",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )

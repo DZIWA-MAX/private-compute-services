@@ -29,7 +29,7 @@ android_library(
         "//src/com/google/android/as/oss/pd/channel",
         "//third_party/java/android_libs/guava_jdk5:cache",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_guava_guava",
         "@maven//:io_grpc_grpc_api",
         "@maven//:javax_inject_javax_inject",

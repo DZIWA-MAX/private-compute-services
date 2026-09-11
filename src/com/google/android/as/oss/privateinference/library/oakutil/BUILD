@@ -96,7 +96,7 @@ android_library(
         "//src/com/google/android/as/oss/privateinference/transport:managed_channel_factory",
         "//third_party/java/grpc:okhttp_android",  # unuseddeps: keep buildcleaner: keep Runtime dependency for gRPC ManagedChannel
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:io_grpc_grpc_api",
         "@maven//:io_grpc_grpc_stub",
@@ -164,7 +164,7 @@ android_library(
         "//third_party/oak/java/src/main/java/com/google/oak/session/tls:oak_session_tls_android",
         "//third_party/oak/proto/session:session_java_proto_lite",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_errorprone_error_prone_annotations",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:com_google_guava_guava",
@@ -206,7 +206,7 @@ android_library(
         "//src/com/google/android/as/oss/privateinference:annotations",
         "//third_party/oak/java/src/main/java/com/google/oak/session:attestation_publisher_android",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:javax_inject_javax_inject",
     ],
@@ -222,7 +222,7 @@ android_library(
     deps = [
         ":public_keys_java_proto_lite",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_protobuf_protobuf_javalite",
         "@maven//:javax_inject_javax_inject",
     ],
@@ -239,7 +239,7 @@ android_library(
         ":public_keys_java_proto_lite",
         "//src/com/google/android/as/oss/privateinference:annotations",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_protobuf_protobuf_javalite",
         "@maven//:javax_inject_javax_inject",
     ],
@@ -255,7 +255,7 @@ android_library(
     deps = [
         ":public_keys_java_proto_lite",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_protobuf_protobuf_javalite",
         "@maven//:javax_inject_javax_inject",
     ],
@@ -277,7 +277,7 @@ android_library(
     deps = [
         "//src/com/google/android/as/oss/common/time",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )
 
@@ -290,7 +290,7 @@ android_library(
         "//src/com/google/android/as/oss/privateinference/library/oakutil/jni:pi_client_session_config_jni",
         "//third_party/oak/java/src/main/java/com/google/oak/session:session_config_builder_android",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )
@@ -309,7 +309,7 @@ android_library(
         "//third_party/oak/java/src/main/java/com/google/oak/session:attestation_publisher_android",
         "//third_party/oak/java/src/main/java/com/google/oak/session:session_config_builder_no_jni_android",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )
 

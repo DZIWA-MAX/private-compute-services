@@ -30,7 +30,7 @@ android_library(
         "//src/com/google/android/as/oss/common/security/config",
         "//src/com/google/android/as/oss/grpc:annotations",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:io_grpc_grpc_api",
         "@maven//:io_grpc_grpc_binder",
     ],

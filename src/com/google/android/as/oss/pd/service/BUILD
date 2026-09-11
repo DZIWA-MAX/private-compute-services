@@ -32,7 +32,7 @@ android_library(
         "//src/com/google/android/as/oss/pd/processor",
         "//src/com/google/android/as/oss/pd/virtualmachine",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:com_google_guava_guava",
         "@maven//:io_grpc_grpc_api",

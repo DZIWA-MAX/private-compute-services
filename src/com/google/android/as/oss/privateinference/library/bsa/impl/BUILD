@@ -99,7 +99,7 @@ android_library(
         "//src/com/google/android/as/oss/privateinference/library/bsa:blind_sign_auth",
         "//src/com/google/android/as/oss/privateinference/library/oakutil:device_attestation_flag",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_errorprone_error_prone_annotations",
     ],
 )

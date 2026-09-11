@@ -30,7 +30,7 @@ android_library(
         "//third_party/kotlin/kotlinx_atomicfu:kotlinx_atomicfu-android",
         "@maven//:androidx_annotation_annotation",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:com_google_protobuf_protobuf_javalite",
     ],

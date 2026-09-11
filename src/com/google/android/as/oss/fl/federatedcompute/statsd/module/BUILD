@@ -32,7 +32,7 @@ android_library(
         "//src/com/google/android/as/oss/fl/federatedcompute/statsd",
         "//src/com/google/android/as/oss/logging:api",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_guava_guava",
         "@maven//:javax_inject_javax_inject",
     ],
@@ -46,6 +46,6 @@ android_library(
         "//src/com/google/android/as/oss/common/config",
         "//src/com/google/android/as/oss/fl/federatedcompute/statsd/config",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )

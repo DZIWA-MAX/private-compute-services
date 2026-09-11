@@ -51,7 +51,7 @@ android_library(
         ":logging",
         ":logging_impl",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )
@@ -66,7 +66,7 @@ android_library(
         ":logging",
         "//src/com/google/android/as/oss/logging:enums_java_proto_lite",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )

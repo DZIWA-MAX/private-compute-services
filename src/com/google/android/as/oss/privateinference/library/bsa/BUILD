@@ -52,7 +52,7 @@ android_library(
         "//src/com/google/android/as/oss/privateinference/util/timers:annotations",
         "//src/com/google/android/as/oss/privateinference/util/timers:timer_set",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:io_grpc_grpc_api",
         "@maven//:javax_inject_javax_inject",
     ],

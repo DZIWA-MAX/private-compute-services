@@ -124,7 +124,7 @@ android_library(
         "//third_party/java/android_app/personalcontext:external",
     ],
     deps = [
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:javax_inject_javax_inject",
     ],

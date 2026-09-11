@@ -72,7 +72,7 @@ android_library(
         "//third_party/java/androidx/appsearch",
         "//third_party/java/androidx/appsearch/platform_storage",
         "//third_party/kotlin/kotlinx_coroutines:kotlinx_coroutines_guava-android",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )
@@ -123,7 +123,7 @@ android_library(
         ":app_search_session_provider",
         ":platform_app_search_session_provider",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )

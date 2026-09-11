@@ -80,7 +80,7 @@ android_library(
         "//src/com/google/android/as/oss/ace/java/com/android/personalcontext/ace/internal/templates/richcard:card_ui_data",
         "//src/com/google/android/as/oss/ace/java/com/android/personalcontext/ace/internal/templates/richcard/decoder:card_ui_data_decoder",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )
 
@@ -93,6 +93,6 @@ android_library(
         "//src/com/google/android/as/oss/ace/java/com/android/personalcontext/ace/internal/templates/richcard:card_ui_data",
         "//src/com/google/android/as/oss/ace/java/com/android/personalcontext/ace/internal/templates/richcard/renderer",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )

@@ -67,7 +67,7 @@ android_library(
         "@maven//:androidx_core_core",
         "@maven//:com_google_code_findbugs_jsr305",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:com_google_guava_guava",
         "@maven//:com_google_protobuf_protobuf_lite",

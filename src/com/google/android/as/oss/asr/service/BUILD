@@ -43,7 +43,7 @@ android_library(
         # Dagger/Hilt
         "//java/com/google/android/libraries/concurrent:prod_hilt_module",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         # gRPC
         "//java/com/google/frameworks/client/data/android/server/contrib/parcelables",
         "@maven//:io_grpc_grpc_binder",

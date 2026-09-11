@@ -108,7 +108,7 @@ pcs_dev_and_mpm(
         "//third_party/java/androidx/work",
         "//third_party/java/dagger/hilt:hilt_android_app",
         "@federated_compute//fcp/client:fl_runner",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:javax_inject_javax_inject",
     ],

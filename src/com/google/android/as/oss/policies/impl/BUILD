@@ -24,7 +24,7 @@ android_library(
     deps = [
         "//java/com/google/android/libraries/pcc/chronicle/api/policy/proto:manifest_java_proto_lite",
         "//src/com/google/android/as/oss/policies/api:policy_map",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_guava_guava",
         "@private_compute_libraries//java/com/google/android/libraries/pcc/chronicle/api/policy/proto:policy_java_proto_lite",
     ],
@@ -38,7 +38,7 @@ android_library(
     deps = [
         "//src/com/google/android/as/oss/policies/api:policy_map",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_guava_guava",
         "@maven//:javax_inject_javax_inject",
     ],
@@ -79,7 +79,7 @@ android_library(
         ":asset_loader",
         "//src/com/google/android/as/oss/policies/api:policy_map",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )

@@ -25,6 +25,6 @@ android_library(
     deps = [
         "//src/com/google/android/as/oss/common:annotation",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )

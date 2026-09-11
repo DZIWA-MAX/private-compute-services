@@ -42,7 +42,7 @@ android_library(
         "//third_party/java/androidx/core/ktx",
         "//third_party/kotlin/kotlinx_coroutines:kotlinx_coroutines-jvm",
         "@maven//:androidx_core_core",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:io_grpc_grpc_api",
         "@maven//:javax_inject_javax_inject",

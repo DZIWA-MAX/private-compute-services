@@ -103,7 +103,7 @@ android_library(
         "//src/com/google/android/as/oss/privateinference/library/bsa/impl:blind_sign_auth_impl",  # unuseddeps: keep
         "//third_party/kotlin/kotlinx_coroutines:kotlinx_coroutines-jvm",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_guava_guava",
         "@maven//:javax_inject_javax_inject",
     ],
@@ -126,7 +126,7 @@ android_library(
         "//src/com/google/android/as/oss/privateinference/logging",
         "//third_party/kotlin/kotlinx_coroutines:kotlinx_coroutines-android",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )

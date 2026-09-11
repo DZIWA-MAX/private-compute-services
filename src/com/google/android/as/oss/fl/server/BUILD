@@ -48,7 +48,7 @@ android_library(
         "//third_party/fcp/java_src/main/java/com/google/fcp/client/privatelogger/impl",
         "@federated_compute//fcp/client:fl_runner",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_flogger_google_extensions",
         "@maven//:com_google_guava_guava",
         "@maven//:com_google_protobuf_protobuf_lite",

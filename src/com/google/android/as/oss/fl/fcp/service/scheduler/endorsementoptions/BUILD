@@ -28,7 +28,7 @@ android_library(
         ":endorsementoptions",
         ":pcs_internal_endorsement_options",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_guava_guava",
     ],
 )
@@ -42,7 +42,7 @@ android_library(
         ":endorsementoptions",
         ":pcs_release_endorsement_options",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:com_google_guava_guava",
     ],
 )
@@ -58,7 +58,7 @@ android_library(
         ":endorsementoptions",
         "//third_party/fcp/protos/confidentialcompute:access_policy_endorsement_options_java_proto_lite",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )
 

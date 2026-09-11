@@ -95,7 +95,7 @@ android_library(
         "//third_party/java/androidx/work",
         "//third_party/kotlin/kotlinx_coroutines:kotlinx_coroutines-android",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )
@@ -108,7 +108,7 @@ android_library(
         "//src/com/google/android/as/oss/privateinference/library/bsa/token",
         "//src/com/google/android/as/oss/privateinference/library/bsa/token:token_provider",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
     ],
 )
 
@@ -134,7 +134,7 @@ android_library(
         "//src/com/google/android/as/oss/privateinference/service:logging_metric_id_qualifiers",
         "//third_party/kotlin/kotlinx_coroutines:kotlinx_coroutines-android",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_hilt-android",
+        "@maven//:com_google_dagger_hilt_android",
         "@maven//:javax_inject_javax_inject",
     ],
 )
