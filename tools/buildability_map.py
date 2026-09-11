@@ -59,7 +59,7 @@ NON_DEP_ATTRS = re.compile(
     r"|restricted_to|tags|features)\s*=\s*(\[[^\]]*\]|[A-Za-z_0-9.\"]+)", re.S)
 
 LOAD_RE = re.compile(r'load\(\s*"([^"]+)"([^)]*)\)', re.S)
-RULE_RE = re.compile(r"^([a-zA-Z_][a-zA-Z_0-9]*)\((.*?)^\)", re.M | re.S)
+CALL_START_RE = re.compile(r"^([a-zA-Z_][a-zA-Z_0-9]*)\(", re.M)
 NAME_RE = re.compile(r'\bname\s*=\s*"([^"]+)"')
 LABEL_RE = re.compile(r'"(@?[A-Za-z0-9_./:@+~-]*(?://|:)[A-Za-z0-9_./:@+~-]*)"')
 SYMBOL_RE = re.compile(r'"([a-zA-Z_][a-zA-Z_0-9]*)"')
@@ -74,6 +74,36 @@ def find_build_files():
             for name in filenames:
                 if name in ("BUILD", "BUILD.bazel"):
                     yield os.path.join(dirpath, name)
+
+
+def iter_calls(text):
+    """Yields (rule, body) for each top-level call, tracking nested parens.
+
+    A regex cannot do this: a one-line call such as package(...) would otherwise
+    run to the closing paren of the next rule block and swallow it.
+    """
+    for match in CALL_START_RE.finditer(text):
+        depth = 0
+        quote = None
+        index = match.end() - 1
+        while index < len(text):
+            char = text[index]
+            if quote:
+                if char == "\\":
+                    index += 2
+                    continue
+                if char == quote:
+                    quote = None
+            elif char in "\"'":
+                quote = char
+            elif char == "(":
+                depth += 1
+            elif char == ")":
+                depth -= 1
+                if depth == 0:
+                    yield match.group(1), text[match.end():index]
+                    break
+            index += 1
 
 
 def parse_package(build_file):
@@ -99,8 +129,7 @@ def parse_package(build_file):
                         bad_symbol = symbol
 
     targets = {}
-    for match in RULE_RE.finditer(text):
-        rule, body = match.group(1), match.group(2)
+    for rule, body in iter_calls(text):
         if rule in NOT_A_RULE:
             continue
         name = NAME_RE.search(body)
