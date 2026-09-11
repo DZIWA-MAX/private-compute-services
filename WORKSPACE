@@ -83,6 +83,11 @@ maven_install(
         "io.grpc:grpc-stub:1.51.1",
         "io.grpc:grpc-context:1.51.1",
         "com.google.protobuf:protobuf-lite:3.0.1",
+        # Runtime for the Kotlin DSL that protoc generates on top of the
+        # Java classes. Pinned to the protobuf version that
+        # rules_proto_grpc 4.0.1 supplies, so protoc and runtime agree.
+        "com.google.protobuf:protobuf-kotlin:3.18.0",
+        "com.google.protobuf:protobuf-kotlin-lite:3.18.0",
         "com.squareup.okhttp3:okhttp:4.10.0",
         "com.google.flogger:google-extensions:0.7.4",
     ],
