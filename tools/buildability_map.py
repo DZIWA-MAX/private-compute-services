@@ -67,6 +67,44 @@ SYMBOL_RE = re.compile(r'"([a-zA-Z_][a-zA-Z_0-9]*)"')
 NOT_A_RULE = frozenset(["load", "package", "licenses", "exports_files",
                         "package_group"])
 
+MAVEN_LABEL_RE = re.compile(r'"@maven//:([A-Za-z0-9_.-]+)"')
+COORD_RE = re.compile(r'"([A-Za-z0-9_.-]+):([A-Za-z0-9_.-]+):([0-9][^"]*)"')
+
+# Artifact lists that WORKSPACE pulls in through a macro rather than spelling
+# out, so their coordinates cannot be read from the file.
+MACRO_ARTIFACT_LISTS = ("HILT_ANDROID_ARTIFACTS", "IO_GRPC_GRPC_KOTLIN_ARTIFACTS")
+
+
+def escape_coordinate(group, artifact):
+    """Mirrors escape() in rules_jvm_external/private/coursier_utilities.bzl."""
+    name = group + "_" + artifact
+    for char in (".", "-", ":", "/", "+"):
+        name = name.replace(char, "_")
+    return name
+
+
+def audit_maven_labels():
+    """Finds @maven labels with no matching coordinate in WORKSPACE.
+
+    A hint list, not a verdict. rules_jvm_external also generates a target for
+    every transitively resolved artifact, and this only reads the coordinates
+    WORKSPACE spells out, so a label backed by a transitive dependency shows up
+    here even though it resolves. What the list is good for is spotting a label
+    whose name could not be produced by escape() at all -- a coordinate written
+    the way a human would rather than the way rules_jvm_external mangles it.
+    """
+    workspace = open(os.path.join(ROOT, "WORKSPACE"), encoding="utf-8").read()
+    declared = {escape_coordinate(group, artifact)
+                for group, artifact, _ in COORD_RE.findall(workspace)}
+
+    unknown = collections.defaultdict(list)
+    for build_file in find_build_files():
+        text = open(build_file, encoding="utf-8", errors="replace").read()
+        for target in MAVEN_LABEL_RE.findall(text):
+            if target not in declared:
+                unknown[target].append(os.path.relpath(build_file, ROOT))
+    return unknown
+
 
 def find_build_files():
     for base in ("src", "third_party"):
@@ -220,6 +258,8 @@ def main():
                         help="print every buildable target")
     parser.add_argument("--blocked", action="store_true",
                         help="print the root cause for every blocked target")
+    parser.add_argument("--maven", action="store_true",
+                        help="audit @maven labels against WORKSPACE")
     args = parser.parse_args()
 
     packages, buildable, blocked = analyze()
@@ -252,6 +292,21 @@ def main():
         print("\nbuildable targets")
         for key in buildable:
             print("  //" + key)
+
+    if args.maven:
+        unknown = audit_maven_labels()
+        print("\n@maven labels with no coordinate in WORKSPACE")
+        if not unknown:
+            print("  none")
+        for target, files in sorted(unknown.items()):
+            print("  @maven//:%s  (%d references, e.g. %s)"
+                  % (target, len(files), files[0]))
+        print("  note: expect false positives. Transitive dependencies also")
+        print("  get targets, and %s are"
+              % " and ".join(MACRO_ARTIFACT_LISTS))
+        print("  macro-supplied, so neither is visible here. A name that")
+        print("  escape() could never emit, such as one keeping a hyphen, is")
+        print("  the signal worth acting on.")
 
     if args.blocked:
         print("\nblocked targets")
