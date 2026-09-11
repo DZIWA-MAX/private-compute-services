@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@bazel_rules_android//android:rules.bzl", "android_library", "kt_jvm_library_with_nullness_check")
+load("@bazel_rules_android//android:rules.bzl", "android_library")
+load("@io_bazel_rules_kotlin//kotlin:jvm.bzl", "kt_jvm_library")
 
 package(default_visibility = [
     "//javatests/com/google/android/apps/miphone/pcs/privateinference/library/bsa:__subpackages__",
@@ -29,7 +30,7 @@ android_library(
     ],
 )
 
-kt_jvm_library_with_nullness_check(
+kt_jvm_library(
     name = "blind_sign_auth_jvm",
     srcs = ["BlindSignAuth.kt"],
     deps = [

@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@bazel_rules_android//android:rules.bzl", "android_library", "kt_jvm_library_with_nullness_check")
+load("@bazel_rules_android//android:rules.bzl", "android_library")
+load("@io_bazel_rules_kotlin//kotlin:jvm.bzl", "kt_jvm_library")
 
 package(default_visibility = [
     "//java/com/google/android/libraries/mdi/privatearatea:__subpackages__",
@@ -36,7 +37,7 @@ android_library(
     ],
 )
 
-kt_jvm_library_with_nullness_check(
+kt_jvm_library(
     name = "blind_sign_auth_impl_jvm",
     srcs = ["BlindSignAuthImpl.kt"],
     deps = [
@@ -68,7 +69,7 @@ android_library(
     ],
 )
 
-kt_jvm_library_with_nullness_check(
+kt_jvm_library(
     name = "phosphor_grpc_message_interface_jvm",
     srcs = ["PhosphorGrpcMessageInterface.kt"],
     visibility = [

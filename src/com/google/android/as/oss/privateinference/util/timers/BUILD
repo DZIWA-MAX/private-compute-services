@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@bazel_rules_android//android:rules.bzl", "android_library", "kt_jvm_library_with_nullness_check")
+load("@bazel_rules_android//android:rules.bzl", "android_library")
+load("@io_bazel_rules_kotlin//kotlin:jvm.bzl", "kt_jvm_library")
 
 package(default_visibility = [
     "//src/com/google/android/as/oss/privateinference:__subpackages__",
@@ -26,7 +27,7 @@ android_library(
     ],
 )
 
-kt_jvm_library_with_nullness_check(
+kt_jvm_library(
     name = "timers_jvm",
     srcs = ["Timers.kt"],
     deps = [
@@ -78,7 +79,7 @@ android_library(
     ],
 )
 
-kt_jvm_library_with_nullness_check(
+kt_jvm_library(
     name = "timer_set_jvm",
     srcs = ["TimerSet.kt"],
     deps = [

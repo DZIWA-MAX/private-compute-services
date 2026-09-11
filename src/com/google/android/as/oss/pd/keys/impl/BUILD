@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@bazel_rules_android//android:rules.bzl", "android_library", "java_library_with_nullness_check")
+load("@bazel_rules_android//android:rules.bzl", "android_library")
 
 package(default_visibility = [
     "//visibility:public",
@@ -72,7 +72,7 @@ android_library(
     ],
 )
 
-java_library_with_nullness_check(
+java_library(
     name = "stable_key_hash_server",
     srcs = ["StableKeyHash.java"],
     visibility = [

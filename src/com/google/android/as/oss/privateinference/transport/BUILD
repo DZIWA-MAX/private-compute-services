@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@bazel_rules_android//android:rules.bzl", "android_library", "kt_jvm_library_with_nullness_check")
+load("@bazel_rules_android//android:rules.bzl", "android_library")
+load("@io_bazel_rules_kotlin//kotlin:jvm.bzl", "kt_jvm_library")
 load("//java/com/google/net/cronet/providers_checker:providers_checker.bzl", "PROVIDERS", "check_bundled_cronet_providers")
 
 package(default_visibility = [
@@ -43,7 +44,7 @@ android_library(
     ],
 )
 
-kt_jvm_library_with_nullness_check(
+kt_jvm_library(
     name = "managed_channel_factory_jvm",
     srcs = ["ManagedChannelFactory.kt"],
     deps = [

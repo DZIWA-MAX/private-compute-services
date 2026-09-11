@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@bazel_rules_android//android:rules.bzl", "android_library", "kt_jvm_library_with_nullness_check")
+load("@bazel_rules_android//android:rules.bzl", "android_library")
+load("@io_bazel_rules_kotlin//kotlin:jvm.bzl", "kt_jvm_library")
 load("//third_party/protobuf/bazel:cc_proto_library.bzl", "cc_proto_library")
 load("//third_party/protobuf/bazel:java_lite_proto_library.bzl", "java_lite_proto_library")
 load("//third_party/protobuf/bazel:java_proto_library.bzl", "java_proto_library")
@@ -266,7 +267,7 @@ android_library(
     srcs = ["PrivateInferenceClientTimerNames.kt"],
 )
 
-kt_jvm_library_with_nullness_check(
+kt_jvm_library(
     name = "private_inference_client_timer_names_jvm",
     srcs = ["PrivateInferenceClientTimerNames.kt"],
 )

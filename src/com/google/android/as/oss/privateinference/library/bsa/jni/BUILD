@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@bazel_rules_android//android:rules.bzl", "android_library", "kt_jvm_library_with_nullness_check")
+load("@bazel_rules_android//android:rules.bzl", "android_library")
+load("@io_bazel_rules_kotlin//kotlin:jvm.bzl", "kt_jvm_library")
 load("//mobile/build:build_defs.bzl", "android_jni_library")
 load("//third_party/bazel_rules/rules_cc/cc:cc_binary.bzl", "cc_binary")
 load("//third_party/bazel_rules/rules_cc/cc:cc_library.bzl", "cc_library")
@@ -43,7 +44,7 @@ android_library(
     ],
 )
 
-kt_jvm_library_with_nullness_check(
+kt_jvm_library(
     name = "blind_sign_auth_jni_bridge_jvm",
     srcs = ["BlindSignAuthJniBridge.kt"],
     visibility = [
