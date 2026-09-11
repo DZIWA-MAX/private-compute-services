@@ -118,6 +118,18 @@ maven_install(
         # for CoroutineWorker; an alias carries a single target, so the split
         # artifact of 2.7.x and earlier would not work here.
         "androidx.work:work-runtime:2.8.1",
+        # Backing artifact for the //third_party/java/android_libs shims.
+        # 1.7.0 is the Material release that lines up with the androidx
+        # versions pinned here.
+        "com.google.android.material:material:1.7.0",
+        # Backing artifacts for the //third_party/kotlin shims. Kotlin is
+        # 1.7.22, the compiler release rules_kotlin 1.7.1 registers, and
+        # coroutines 1.6.4 is the last line built against that compiler:
+        # 1.7 and newer need Kotlin 1.8.20.
+        "org.jetbrains.kotlin:kotlin-parcelize-runtime:1.7.22",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.6.4",
         "androidx.lifecycle:lifecycle-livedata-core:2.5.1",
         "com.google.api.grpc:proto-google-common-protos:2.12.0",
         "io.grpc:grpc-protobuf-lite:1.51.1",
@@ -126,6 +138,10 @@ maven_install(
         "io.grpc:grpc-core:1.51.1",
         "io.grpc:grpc-stub:1.51.1",
         "io.grpc:grpc-context:1.51.1",
+        # Backing artifacts for the //third_party/java/grpc shims, at the same
+        # 1.51.1 as the rest of io.grpc above.
+        "io.grpc:grpc-cronet:1.51.1",
+        "io.grpc:grpc-okhttp:1.51.1",
         "com.google.protobuf:protobuf-lite:3.0.1",
         # Runtime for the Kotlin DSL that protoc generates on top of the
         # Java classes. Pinned to the protobuf version that
