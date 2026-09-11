@@ -92,6 +92,32 @@ maven_install(
         "com.google.errorprone:error_prone_annotations:2.17.0",
         "androidx.core:core:1.9.0",
         "androidx.room:room-runtime:2.4.3",
+        # Backing artifacts for the //third_party/java/androidx shims. Versions
+        # track the Compose 2022.10.00 BOM (Compose 1.3.0, Material3 1.0.0),
+        # co-released with the activity 1.6.1, lifecycle 2.5.1 and core 1.9.0
+        # already pinned above. rules_jvm_external 4.5 cannot consume a BOM, so
+        # every coordinate is listed explicitly.
+        "androidx.activity:activity-compose:1.6.1",
+        "androidx.appcompat:appcompat:1.6.1",
+        # AppSearch has no stable release; this alpha is unverified against the
+        # SearchSpec and SetSchemaRequest usage in src/.
+        "androidx.appsearch:appsearch:1.0.0-alpha03",
+        "androidx.compose.animation:animation-core:1.3.0",
+        "androidx.compose.animation:animation:1.3.0",
+        "androidx.compose.foundation:foundation-layout:1.3.0",
+        "androidx.compose.foundation:foundation:1.3.0",
+        "androidx.compose.material3:material3:1.0.0",
+        "androidx.compose.runtime:runtime:1.3.0",
+        "androidx.compose.ui:ui-graphics:1.3.0",
+        "androidx.compose.ui:ui-unit:1.3.0",
+        "androidx.compose.ui:ui:1.3.0",
+        "androidx.core:core-ktx:1.9.0",
+        "androidx.datastore:datastore-core:1.0.0",
+        "androidx.hilt:hilt-navigation-compose:1.0.0",
+        # 2.8.x folds work-runtime-ktx into work-runtime, which the sources need
+        # for CoroutineWorker; an alias carries a single target, so the split
+        # artifact of 2.7.x and earlier would not work here.
+        "androidx.work:work-runtime:2.8.1",
         "androidx.lifecycle:lifecycle-livedata-core:2.5.1",
         "com.google.api.grpc:proto-google-common-protos:2.12.0",
         "io.grpc:grpc-protobuf-lite:1.51.1",
