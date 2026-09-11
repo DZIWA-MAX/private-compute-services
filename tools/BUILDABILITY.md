@@ -2,20 +2,34 @@
 
 This repository is a Copybara mirror of Google-internal code. `CONTRIBUTING`
 states that it exists to let developers read the implementation, and that is
-what it supports: the export omits Google-internal `.bzl` helpers, several
-`third_party` packages, and two external repositories, so most of the tree
-cannot be built as published.
+what it supports: the export omits Google-internal `.bzl` helpers, many
+`third_party` packages, and several external repositories.
 
-Run `python3 tools/buildability_map.py` to reproduce the numbers below, and
-`--list` / `--blocked` for the per-target detail.
+Run `python3 tools/buildability_map.py` to reproduce the numbers, `--list` and
+`--blocked` for per-target detail, and `--maven` to audit `@maven` labels.
 
 ## Current state
 
 | | targets |
 |---|---|
-| total | 698 |
-| buildable | 152 (22%) |
-| blocked | 546 |
+| total | 931 |
+| buildable | 432 (46%) |
+| blocked | 499 |
+
+Starting point was 131. What moved it, in order:
+
+| change | buildable |
+|---|---|
+| as exported | 131 |
+| `third_party/protobuf/bazel` shims for the native proto rules | 152 |
+| `kt_jvm_proto_library` / `kt_jvm_lite_proto_library` | 238 |
+| `kt_jvm_grpc_library` re-exported from grpc-kotlin | ~269 |
+| `third_party/java/androidx` shims | ~310 |
+| `third_party/kotlin`, `java/grpc`, `android_libs`, `dagger/hilt` shims | 432 |
+
+Counts before and after a parser fix are not comparable: the map used to let a
+one-line `package(...)` call swallow the rule following it, so totals below 916
+are undercounts against a denominator of 698.
 
 `build.sh` ends with `bazel build //src/com/google/android/as/oss:pcs`. That
 target does not exist. `src/com/google/android/as/oss/BUILD` defines `release`
@@ -23,60 +37,69 @@ via the `pcs_dev_and_mpm` macro, loaded from
 `//src/com/google/android/as/oss:build_defs.bzl`, which is not in the export.
 The APK cannot be produced here.
 
-## Root cause of the 546 blocked targets
+## Root cause of the 499 blocked targets
 
 | cause | targets |
 |---|---|
-| `load()` of an unexported `.bzl` | 294 |
-| dependency on an unexported package | 110 |
-| blocked transitively | 101 |
-| symbol not exported by the pinned `rules_android` | 37 |
-| undeclared external repository | 3 |
-| dependency on a package broken by its own loads | 1 |
+| blocked transitively | 205 |
+| dependency on an unexported package | 132 |
+| `load()` of an unexported `.bzl` | 85 |
+| symbol not exported by the pinned `rules_android` | 70 |
+| undeclared external repository | 7 |
 
-### Largest remaining blockers
-
-`//third_party/protobuf/build_defs:kt_jvm_proto_library.bzl` alone accounts for
-218 targets. It must supply `kt_jvm_lite_proto_library` (39 call sites) and
-`kt_jvm_proto_library` (2). Unlike the four rules shimmed in
-`third_party/protobuf/bazel`, these have no native Bazel 6 equivalent, and the
-protobuf version pulled in transitively by `rules_proto_grpc` 4.0.1 predates
-protobuf's own Kotlin Bazel rules. A faithful shim needs a custom rule invoking
-`protoc --kotlin_out`; forwarding to `java_lite_proto_library` instead would
-build, but would emit Java bindings and break any Kotlin source using the
-generated proto DSL.
+### Remaining blockers
 
 Ten packages load `kt_jvm_library_with_nullness_check` or
 `java_library_with_nullness_check` from `@bazel_rules_android//android:rules.bzl`.
-The pinned `v0.1.1` tag exports neither — those names are internal to Google —
-and an absent symbol fails the whole `BUILD` file, not just the one target.
+The pinned `v0.1.1` exports neither — they are internal to Google — and an
+absent symbol fails the whole `BUILD` file, not just one target. Fixing this
+means patching the external repository or editing those loads.
 
-`@federated_compute` and `@private_retrieval` are referenced by `BUILD` files
-but never declared in `WORKSPACE`, so federated compute cannot be built even
-though the README points at its open-source repository.
+`@federated_compute`, `@private_retrieval` and Project Oak are referenced but
+never declared in `WORKSPACE`. Recovering them needs new repository rules and a
+Bazel path to their Java clients, not aliases.
 
-The unexported package dependencies are mostly Google's internal mirrors of
-public libraries — `//third_party/java/androidx/compose/*`,
-`//third_party/kotlin/kotlinx_coroutines`, `//third_party/java/androidx/appsearch`,
-`//third_party/oak/*`. Each would need a `BUILD` shim pointing at the
-corresponding `@maven` artifact.
+Several dependencies cannot be shimmed at all, because no public artifact
+corresponds to them:
 
-## What the proto shims recovered
+- `//third_party/java/android_libs/safeparcel` — the federated-compute fork of
+  SafeParcelable, published nowhere; its annotation processor likewise.
+- `//third_party/java/android_libs/settingslib` — AOSP SettingsLib, compiled
+  inside the platform tree.
+- `//third_party/java/protobuf:java_features_proto` and
+  `//third_party/protobuf:cpp_features_proto` — `proto_library` targets for
+  protobuf Editions, which postdate the 3.18.0 resolved here. These are
+  consumed through an `option_deps` attribute that Bazel 6's native
+  `proto_library` does not have, so the shim in `third_party/protobuf/bazel`
+  will reject those call sites even once the label resolves.
+- `//java/com/google/...`, `//google/internal/...`, `//googledata/...`,
+  `//third_party/java/android/android_sdk_linux/...` — Google-internal, never
+  published.
 
-Adding `third_party/protobuf/bazel` moved the count from 131 to 152 with no
-regression. The 21 recovered targets are the proto and gRPC API layers:
+## Caveats
 
-- `asr/api` (9) — the SRSG speech proxy service and its feature config
-- `attestation/api` (2), `http/api` (2), `pir/api` (2), `survey/api` (2)
-- `pd/persistence` (2) and `pd/virtualmachine/impl` (1)
-- `protos` (1) — the PCS feature enum
+Nothing here has been built. Bazel is not installed in the environment this was
+produced in, and the egress proxy blocks Maven Central archives and Google
+Maven, so no POM was fetched and no version co-resolution was exercised. What
+is verified is static label resolution, plus upstream source reads for the
+protoc flags, the `rules_android` and grpc-kotlin exports, and
+rules_jvm_external's name mangling.
 
-## Caveat
+The map is an optimistic upper bound for a further reason: `glob()` in `srcs`
+is not expanded, implicitly generated targets are not modelled, and a label
+pointing at a missing target inside a package that does exist is treated as
+resolvable.
 
-This is static analysis, not a verified build. `glob()` in `srcs` is not
-expanded and implicitly generated targets are not modelled, so the buildable
-count is an optimistic upper bound. Nothing here has been confirmed by running
-Bazel.
+Three known gaps in what the shims provide, all of which will surface only at
+compile time:
+
+- `alias` has no `exported_plugins`, so the Room, AppSearch and Compose
+  annotation processors are unwired.
+- `kotlin-parcelize-runtime` supplies the `@Parcelize` annotation, but
+  rules_kotlin 1.7.1 exposes no way to enable the parcelize compiler plugin, so
+  no `CREATOR` is generated.
+- The `androidx.appsearch` coordinate is an alpha, since AppSearch has no
+  stable release, and is unverified against the API the sources use.
 
 ## Note on running the app
 
