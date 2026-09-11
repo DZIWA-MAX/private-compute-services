@@ -38,6 +38,24 @@ http_archive(
     urls = ["https://github.com/google/dagger/archive/dagger-%s.zip" % DAGGER_TAG],
 )
 
+# grpc-kotlin supplies kt_jvm_grpc_library, which //tools/build_defs/kotlin
+# re-exports. Declared here because the maven_install below needs its
+# artifacts. git_repository rather than http_archive because this environment
+# cannot fetch the release archive to compute a sha256; pin one when possible.
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+git_repository(
+    name = "com_github_grpc_grpc_kotlin",
+    remote = "https://github.com/grpc/grpc-kotlin.git",
+    tag = "v1.3.0",
+)
+
+load(
+    "@com_github_grpc_grpc_kotlin//:repositories.bzl",
+    "IO_GRPC_GRPC_KOTLIN_ARTIFACTS",
+    "IO_GRPC_GRPC_KOTLIN_OVERRIDE_TARGETS",
+    "grpc_kt_repositories",
+)
 load(
     "@dagger//:workspace_defs.bzl",
     "HILT_ANDROID_ARTIFACTS",
@@ -54,7 +72,7 @@ rules_jvm_external_setup()
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 
 maven_install(
-    artifacts = HILT_ANDROID_ARTIFACTS + [
+    artifacts = HILT_ANDROID_ARTIFACTS + IO_GRPC_GRPC_KOTLIN_ARTIFACTS + [
         "com.google.auto.value:auto-value:1.10.1",
         "com.google.auto.value:auto-value-annotations:1.10.1",
         "com.ryanharter.auto.value:auto-value-parcel:0.2.9",
@@ -92,6 +110,7 @@ maven_install(
         "com.google.flogger:google-extensions:0.7.4",
     ],
     fetch_sources = True,
+    override_targets = IO_GRPC_GRPC_KOTLIN_OVERRIDE_TARGETS,
     repositories = HILT_ANDROID_REPOSITORIES + [
         "https://jcenter.bintray.com/",
         "https://maven.google.com",
@@ -169,7 +188,10 @@ load("@io_bazel_rules_kotlin//kotlin:core.bzl", "kt_register_toolchains")
 
 kt_register_toolchains()
 
-load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+# No-ops for io_bazel_rules_kotlin, com_google_protobuf and io_grpc_grpc_java,
+# which are all declared above: in WORKSPACE the first declaration of a
+# repository wins, so the versions pinned here are the ones that apply.
+grpc_kt_repositories()
 
 git_repository(
     name = "private_compute_libraries",
